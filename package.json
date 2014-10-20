@@ -1,0 +1,25 @@
+{
+  "name": "gitqueue",
+  "version": "0.0.1",
+  "description": "Make your proyect`s pull request public queue",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LdonosoC/jsweb.git"
+  },
+  "keywords": [
+    "git",
+    "pull",
+    "request",
+    "queue"
+  ],
+  "author": "Lioba",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LdonosoC/jsweb/issues"
+  },
+  "homepage": "https://github.com/LdonosoC/jsweb"
+}
