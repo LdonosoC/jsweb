@@ -18,8 +18,15 @@ app.get('/:owner/:repo', function (req, res) {
 	});
 });
 
-app.get('/settings', function (req, res) {
-	res.render('settings.twig');
+app.get('/:owner/:repo/settings', function (req, res) {
+	var owner 	= req.params.owner
+	var repo 	= req.params.repo
+
+	res.render('settings.twig', {
+		project: 	owner + '/' + repo,
+		owner: 		owner,
+		repo: 		repo		
+	});
 });
 
 var server = app.listen(8080, function () {
