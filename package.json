@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/LdonosoC/jsweb/issues"
   },
-  "homepage": "https://github.com/LdonosoC/jsweb"
+  "homepage": "https://github.com/LdonosoC/jsweb",
+  "dependencies": {
+    "express": "^4.9.8"
+  }
 }
