@@ -9,5 +9,12 @@
 			<br />
 			repo: {{ repo }}
 		</div>
+		<ul>
+			{% for issue in issues %}
+				<li>
+					{{ issue.title }}
+				</li>
+			{% endfor %}
+		</ul>
 	</body>
 </html>

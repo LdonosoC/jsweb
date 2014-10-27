@@ -24,6 +24,7 @@
   "homepage": "https://github.com/joserobleda/jsweb",
   "dependencies": {
     "express": "^4.9.8",
+    "request": "^2.47.0",
     "twig": "^0.7.2"
   }
 }
