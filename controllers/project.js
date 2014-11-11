@@ -13,6 +13,19 @@ function show(req, res) {
 	});
 };
 
+function forks(req, res) {
+	var owner 	= req.params.owner;
+	var repo 	= req.params.repo;
+	var project = new Project(owner + '/' + repo);
+
+	project.getForks(function (forks) {
+		res.render('forks.twig', {
+			forks: forks,
+			project: project.name
+		});
+	});
+};
+
 function settings(req, res) {
 	var owner 	= req.params.owner;
 	var repo 	= req.params.repo;
@@ -28,5 +41,6 @@ function settings(req, res) {
 
 module.exports = {
 	show: show,
-	settings: settings
+	settings: settings,
+	forks: forks
 };

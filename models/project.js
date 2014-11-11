@@ -1,10 +1,11 @@
 var request = require('request');
 
 function Project(name) {
+	var self = this;
 	this.name = name;
 
-	this.getIssues = function(cb) {
-		var URL 	= 'https://api.github.com/repos/'+ this.name +'/issues';
+	var getFromGithub = function (path, cb) {
+		var URL 	= 'https://api.github.com' + path;
 		var options = {
 		    url: URL,
 		    headers: {
@@ -18,9 +19,23 @@ function Project(name) {
 				return;
 			}
 
-			var issues = JSON.parse(body);
-			cb(issues);
+			var obj = JSON.parse(body);
+			cb(obj);
 		});
+	};
+
+	var getResources = function(cb, resource) {
+		var path = '/repos/'+ self.name +'/' + resource;
+
+		getFromGithub(path, cb);
+	};
+
+	this.getIssues = function (cb) {
+		getResources(cb, 'issues');
+	};
+
+	this.getForks = function (cb) {
+		getResources(cb, 'forks');
 	};
 
 	this.countIssues = function(cb) {
