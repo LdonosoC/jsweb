@@ -1,0 +1,18 @@
+<html>
+	<head>
+		<title>GitQueue</title>
+	</head>
+	<body>
+		<h3>The project {{ project }}</h3>
+		<div>
+			{{ forks|length }} forks
+		</div>
+		<ul>
+			{% for fork in forks %}
+				<li>
+					{{ fork.full_name }}
+				</li>
+			{% endfor %}
+		</ul>
+	</body>
+</html>

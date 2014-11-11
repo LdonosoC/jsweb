@@ -5,9 +5,32 @@ function show(req, res) {
 	var repo 	= req.params.repo;
 	var project = new Project(owner + '/' + repo);
 
+	res.render('project.twig', {
+		project: project.name
+	});
+};
+
+function issues(req, res) {
+	var owner 	= req.params.owner;
+	var repo 	= req.params.repo;
+	var project = new Project(owner + '/' + repo);
+
 	project.getIssues(function (issues) {
-		res.render('project.twig', {
-			issues: issues,
+		res.render('issues.twig', {
+			issues: issues
+		});
+	});
+};
+
+
+function forks(req, res) {
+	var owner 	= req.params.owner;
+	var repo 	= req.params.repo;
+	var project = new Project(owner + '/' + repo);
+
+	project.getForks(function (forks) {
+		res.render('forks.twig', {
+			forks: forks,
 			project: project.name
 		});
 	});
@@ -28,5 +51,7 @@ function settings(req, res) {
 
 module.exports = {
 	show: show,
-	settings: settings
+	issues: issues,
+	settings: settings,
+	forks: forks
 };

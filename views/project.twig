@@ -1,18 +1,15 @@
 <html>
 	<head>
 		<title>GitQueue</title>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	</head>
 	<body>
 		<h3>The project {{ project }}</h3>
-		<div>
-			{{ issues|length }} issues
+
+		<div id="issues-list">
+			Cargando...
 		</div>
-		<ul>
-			{% for issue in issues %}
-				<li>
-					{{ issue.title }}
-				</li>
-			{% endfor %}
-		</ul>
+
+		<script src="/js/main.js"></script>
 	</body>
 </html>
