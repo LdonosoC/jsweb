@@ -1,4 +1,5 @@
 var request = require('request');
+var cache 	= {}
 
 function Project(name) {
 	var self = this;
@@ -13,6 +14,11 @@ function Project(name) {
 		    }
 		};
 
+		if (cache[URL] !== undefined) {
+			cb(cache[URL]);
+			return;
+		}
+
 		request(options, function (err, res, body) {
 			if (err) {
 				console.log(err);
@@ -20,6 +26,7 @@ function Project(name) {
 			}
 
 			var obj = JSON.parse(body);
+			cache[URL] = obj;
 			cb(obj);
 		});
 	};
