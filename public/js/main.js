@@ -1,4 +1,9 @@
 
-$.get(location.pathname + '/issues', function (html) {
-	$("#issues-list").html(html);
+$("div[src]").each(function () {
+	var dom = this,
+	url = $(dom).attr('src');
+
+	$.get(url, function (html) {
+		$(dom).html(html);
+	});
 });

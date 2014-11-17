@@ -28,12 +28,17 @@ function forks(req, res) {
 	var repo 	= req.params.repo;
 	var project = new Project(owner + '/' + repo);
 
-	project.getForks(function (forks) {
+	if (req.xhr) {
+		project.getForks(function (forks) {
+			res.render('fork-list.twig', {
+				forks: forks
+			});
+		});
+	} else {
 		res.render('forks.twig', {
-			forks: forks,
 			project: project.name
 		});
-	});
+	}
 };
 
 function settings(req, res) {
