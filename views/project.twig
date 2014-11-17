@@ -6,8 +6,12 @@
 	<body>
 		<h3>The project {{ project }}</h3>
 
-		<div id="issues-list">
-			Cargando...
+		<div src="/{{ project }}/issues">
+			Cargando issues...
+		</div>
+
+		<div src="/{{ project }}/forks">
+			Cargando forks...
 		</div>
 
 		<script src="/js/main.js"></script>

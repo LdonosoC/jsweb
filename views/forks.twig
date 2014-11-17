@@ -1,18 +1,13 @@
 <html>
 	<head>
 		<title>GitQueue</title>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	</head>
 	<body>
 		<h3>The project {{ project }}</h3>
-		<div>
-			{{ forks|length }} forks
+		<div src="/{{ project }}/forks">
+			Cargando...
 		</div>
-		<ul>
-			{% for fork in forks %}
-				<li>
-					{{ fork.full_name }}
-				</li>
-			{% endfor %}
-		</ul>
+		<script src="/js/main.js"></script>
 	</body>
 </html>
