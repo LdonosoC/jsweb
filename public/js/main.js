@@ -1,19 +1,28 @@
 
 
-var deferreds = [];
+var promises = [];
 $("div[src]").each(function () {
 	var dom = this,
 	url = $(dom).attr('src');
 
-	var deferred = $.get(url);
-	deferred.promise.dom = dom;
-	deferreds.push(deferred);
+
+	var defer = Q.defer();
+	promises.push(defer.promise);
+
+	$.get(url, function (res) {
+		defer.resolve({
+			response: res,
+			dom: dom
+		});
+	});
+
+	defer.promise.then(function () {
+		console.log(url + ' terminado!');
+	});
 });
 
-$.when.apply($, deferreds).then(function () {
-	$.each(arguments, function (i, response) {
-
-		var promise = response[2].promise;
-		$(promise.dom).html(response[0]);
+Q.all(promises).then(function () {
+	$.each(promises, function (i, promise) {
+		$(promise.dom).html(promise.response);
 	});
 });
